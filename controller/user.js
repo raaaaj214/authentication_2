@@ -97,7 +97,9 @@ export const logoutUser = async(req,res) => {
     else
     {
         res.cookie("token" , null , {
-            expires : new Date(Date.now())
+            expires : new Date(Date.now()),
+            sameSite: 'none', 
+                secure: true
         })
         res.json({
             success : true,
