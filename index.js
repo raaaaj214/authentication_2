@@ -19,8 +19,9 @@ mongoose.connect(process.env.MONGODB_URL, {
 // middlewares
 app.use(cors({
     methods : ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    origin : process.env.FRONTEND_URL,
-    credentials : true
+     origin:'http://localhost:3000', //or whatever port your frontend is using
+    credentials:true,            
+    optionSuccessStatus:200
 }))
 
 app.use(cookieParser())
