@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 // middlewares
 app.use(cors({
     methods : ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    origin : [process.env.FRONTEND_URL],
+    origin : process.env.FRONTEND_URL,
     credentials : true
 }))
 
