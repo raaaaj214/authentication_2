@@ -1,9 +1,12 @@
 import express from "express";
+import postRouter from "./routes/post.js"
 import userRouter from "./routes/user.js"
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import 'dotenv/config'
+
+
 
 const app = express();
 
@@ -33,6 +36,7 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 
+app.use("/post", postRouter)
 app.use("/user" , userRouter)
 
 
@@ -45,9 +49,8 @@ app.get("/" , (req,res) => {
 })
 
 
-
-
-
 app.listen(process.env.PORT, () => {
-    console.log("Server Started...")
+    const date = new Date()
+    console.log(date.toDateString())
+    console.log(`Server Started on port ${process.env.PORT} in mode ${process.env.MODE}`)
 })
